@@ -1,0 +1,111 @@
+﻿@using Referee.Entities
+@model Referee.Entities.Match
+@functions
+{
+
+    private string GetContrastingColor(string color)
+    {
+        if (color.ToLower() == "blue")
+        {
+            return "white";
+        }
+        return "black";
+    }
+
+}
+@{
+
+
+    ViewBag.Title = "Details";
+    var redScore = 0;
+    var blueScore = 0;
+    var leftColor = Model.Table.SideOneColor.ToString();
+    var leftFontColor = GetContrastingColor(leftColor);
+    var rightColor = Model.Table.SideTwoColor.ToString();
+    var rightFontColor = GetContrastingColor(rightColor);
+
+    foreach (var goal in Model.Goals)
+    {
+        if (goal.Side == TableSide.Blue)
+        {
+            blueScore++;
+        }
+        else
+        {
+            redScore++;
+        }
+    }
+}
+@if (!Model.IsFinished)
+{
+    <div class="blink live">LIVE</div>
+    <script>
+        window.setInterval(function() {
+            jQuery('.blink').toggleClass('invis');
+        }, 750);
+        window.setTimeout(function() {
+            window.location.reload(1);
+        }, 5000);
+    </script>
+}
+
+
+<table class="match-details">
+
+    <tr>
+
+        <td class="left-team team" style="background-color: @(leftColor); color: @(leftFontColor);">
+
+            @(Model.RedTeam.GetNameOrDefault())
+        </td>
+
+        <td class="left-score" style="background-color: @(leftColor); color: @(leftFontColor);">
+
+            @(redScore)
+        </td>
+
+        <td class="vs" style="background: linear-gradient(to right, @(leftColor), @(rightColor));">
+
+            vs
+
+        </td>
+
+        <td class="right-score" style="background-color: @(rightColor); color: @(rightFontColor);">
+
+            @(blueScore)
+        </td>
+
+        <td class="right-team team" style="background-color: @(rightColor); color: @(rightFontColor);">
+
+            @(Model.BlueTeam.GetNameOrDefault())
+        </td>
+
+    </tr>
+
+    @foreach (var goal in Model.Goals.OrderBy(g => g.Time))
+    {
+        <tr>
+
+            <td colspan="2" class="goal left-goal">
+
+                @if (goal.Side == TableSide.Red)
+                {
+                    @(Model.RedTeam.GetNameOrDefault())
+                    <img src="~/Content/football-icon-24x24.png"/>
+                }
+            </td>
+
+            <td class="goal-time">@((goal.Time - Model.StartTime).Minutes)'</td>
+
+            <td colspan="2" class="goal right-goal">
+
+                @if (goal.Side == TableSide.Blue)
+                {
+                    <img src="~/Content/football-icon-24x24.png"/>
+                    @(Model.BlueTeam.GetNameOrDefault())
+                }
+            </td>
+
+        </tr>
+    }
+</table>

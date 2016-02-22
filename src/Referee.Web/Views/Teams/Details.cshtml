@@ -1,0 +1,41 @@
+﻿@model Referee.Web.Models.TeamViewModel
+
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+<h2>Details</h2>
+
+
+<div>
+
+    <h4>Team</h4>
+
+    <hr/>
+
+    <dl class="dl-horizontal">
+
+        <dt>@Html.DisplayNameFor(model => model.Name)</dt>
+
+        <dd>@Html.DisplayFor(model => model.Name)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.PlayerOneName)</dt>
+
+        <dd>@Html.ActionLink(Model.PlayerOneName, "Edit", "Players", new {Id = Model.PlayerOneId}, null)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.PlayerTwoName)</dt>
+
+        <dd>@Html.ActionLink(Model.PlayerTwoName, "Edit", "Players", new {Id = Model.PlayerTwoId}, null)</dd>
+
+    </dl>
+
+</div>
+
+<p>
+
+    @Html.ActionLink("Edit", "Edit", new {id = Model.Id}) |
+
+    @Html.ActionLink("Back to List", "Index")
+</p>

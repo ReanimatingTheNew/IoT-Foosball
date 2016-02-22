@@ -1,0 +1,91 @@
+﻿@using Referee.Resources
+@model Referee.Web.Models.MatchCreateViewModel
+
+
+@{
+    ViewBag.Title = "Create";
+}
+
+
+<h2>New match</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        @Html.ValidationSummary(true, "", new {@class = "text-danger"})
+        <div class="form-group">
+
+            @Html.LabelFor(model => model.RedOneId, string.Format(Resource.FirstPlayer, Model.SideOneColorName), new {@class = "control-label col-md-2"})
+            <div class="col-md-10">
+
+                @Html.DropDownListFor(m => m.RedOneId, Model.Players, string.Empty, new {@class = "form-control"})
+                @Html.ValidationMessageFor(model => model.RedOneId, "", new {@class = "text-danger"})
+            </div>
+
+        </div>
+
+
+        <div class="form-group">
+
+
+            @Html.LabelFor(model => model.RedTwoId, string.Format(Resource.SecondPlayer, Model.SideOneColorName), new {@class = "control-label col-md-2"})
+            <div class="col-md-10">
+
+                @Html.DropDownListFor(m => m.RedTwoId, Model.Players, string.Empty, new {@class = "form-control"})
+                @Html.ValidationMessageFor(model => model.RedTwoId, "", new {@class = "text-danger"})
+            </div>
+
+        </div>
+
+
+        <div class="form-group">
+
+            @Html.LabelFor(model => model.BlueOneId, string.Format(Resource.FirstPlayer, Model.SideTwoColorName), new {@class = "control-label col-md-2"})
+            <div class="col-md-10">
+
+                @Html.DropDownListFor(m => m.BlueOneId, Model.Players, string.Empty, new {@class = "form-control"})
+                @Html.ValidationMessageFor(model => model.BlueOneId, "", new {@class = "text-danger"})
+            </div>
+
+        </div>
+
+
+        <div class="form-group">
+
+            @Html.LabelFor(model => model.BlueTwoId, string.Format(Resource.SecondPlayer, Model.SideTwoColorName), new {@class = "control-label col-md-2"})
+            <div class="col-md-10">
+
+                @Html.DropDownListFor(m => m.BlueTwoId, Model.Players, string.Empty, new {@class = "form-control"})
+                @Html.ValidationMessageFor(model => model.BlueTwoId, "", new {@class = "text-danger"})
+            </div>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <div class="col-md-offset-2 col-md-10">
+
+                <input type="submit" value="Start!" class="btn btn-danger"/>
+
+            </div>
+
+        </div>
+
+    </div>
+}
+
+
+<div>
+
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,49 @@
+﻿@model Referee.Entities.Table
+
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+<h2>Details</h2>
+
+
+<div>
+
+    <h4>Table</h4>
+
+    <hr/>
+
+    <dl class="dl-horizontal">
+
+        <dt>@Html.DisplayNameFor(model => model.Location)</dt>
+
+        <dd>@Html.DisplayFor(model => model.Location)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.Name)</dt>
+
+        <dd>@Html.DisplayFor(model => model.Name)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.Guid)</dt>
+
+        <dd>@Html.DisplayFor(model => model.Guid)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.SideOneColor)</dt>
+
+        <dd>@Html.DisplayFor(model => model.SideOneColor)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.SideTwoColor)</dt>
+
+        <dd>@Html.DisplayFor(model => model.SideTwoColor)</dd>
+
+    </dl>
+
+</div>
+
+<p>
+
+    @Html.ActionLink("Edit", "Edit", new {id = Model.Id}) |
+
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,61 @@
+﻿@model List<Statistics.TeamRatingEntry>
+
+
+
+@{
+    ViewBag.Title = "Teams";
+}
+
+
+<h2>Team Rankings</h2>
+
+@if (Model.Count > 2)
+{
+    <div class="top-three-container">
+        <div class="top-three second">
+            @Html.ActionLink(Model[1].Team.GetNameOrDefault(), "Details", "Teams", new {Model[1].Team.Id}, null)
+        </div>
+        <div class="top-three first">
+            @Html.ActionLink(Model[0].Team.GetNameOrDefault(), "Details", "Teams", new {Model[0].Team.Id}, null)
+        </div>
+        <div class="top-three third">
+            @Html.ActionLink(Model[2].Team.GetNameOrDefault(), "Details", "Teams", new {Model[2].Team.Id}, null)
+        </div>
+    </div>
+}
+
+<table class="table">
+
+    <tr>
+
+        <th>
+
+            Team Name
+
+        </th>
+
+        <th>
+
+            Rating
+
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+
+                @Html.ActionLink(item.Team.GetNameOrDefault(), "Details", "Teams", new {item.Team.Id}, null)
+            </td>
+
+            <td>
+
+                @(Math.Round(item.Rating))
+            </td>
+
+        </tr>
+    }
+</table>

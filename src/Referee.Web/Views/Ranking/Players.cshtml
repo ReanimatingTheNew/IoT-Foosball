@@ -1,0 +1,61 @@
+﻿@model List<Statistics.PlayerRatingEntry>
+
+
+
+@{
+    ViewBag.Title = "Player Rating";
+}
+
+
+<h2>Player Rankings</h2>
+
+@if (Model.Count > 2)
+{
+    <div class="top-three-container">
+        <div class="top-three second">
+            @Html.DisplayFor(modelItem => Model[1].Player.Name)
+        </div>
+        <div class="top-three first">
+            @Html.DisplayFor(modelItem => Model[0].Player.Name)
+        </div>
+        <div class="top-three third">
+            @Html.DisplayFor(modelItem => Model[2].Player.Name)
+        </div>
+    </div>
+}
+
+<table class="table">
+
+    <tr>
+
+        <th>
+
+            Player Name
+
+        </th>
+
+        <th>
+
+            Rating
+
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+
+                @Html.DisplayFor(modelItem => item.Player.Name)
+            </td>
+
+            <td>
+
+                @(Math.Round(item.Rating))
+            </td>
+
+        </tr>
+    }
+</table>

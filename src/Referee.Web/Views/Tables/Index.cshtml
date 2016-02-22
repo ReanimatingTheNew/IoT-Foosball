@@ -1,0 +1,80 @@
+﻿@model IEnumerable<Referee.Web.Models.TableIndexViewModel>
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<h2>Index</h2>
+
+
+<p>
+
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<table class="table table-hover">
+
+    <tr>
+
+        <th>
+
+            @Html.DisplayNameFor(model => model.Location)
+        </th>
+
+        <th>
+
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+
+        <th>Match / Claim Table</th>
+
+        <th></th>
+
+    </tr>
+
+
+    @foreach (var item in Model)
+    {
+        <tr class="@(item.MatchOngoing ? "danger" : "success")">
+
+            <td>
+
+                @Html.DisplayFor(modelItem => item.Location)
+            </td>
+
+            <td>
+
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+
+            <td>
+
+                @if (item.MatchOngoing)
+                {
+                    @:<span style="color: @item.SideOneColor">@item.SideOneTeamName <em>@item.SideOneScore</em></span>&nbsp;
+                    <span style="color: @item.SideTwoColor"><em>@item.SideTwoScore</em> @item.SideTwoTeamName</span>
+                }
+                else
+                {
+                    @Html.ActionLink("Start match!", "Create", "Matches", new {tableId = item.Id}, null)
+                }
+            </td>
+
+            <td>
+
+                @if (item.OngoingMatchId.HasValue)
+                {
+                    @(Html.ActionLink("LIVE", "Details", "Matches", new {id = item.OngoingMatchId}, null))<text> |</text>
+                }
+                @Html.ActionLink("Edit", "Edit", new {id = item.Id}) |
+
+                @Html.ActionLink("Details", "Details", new {id = item.Id})
+            </td>
+
+        </tr>
+    }
+
+
+</table>

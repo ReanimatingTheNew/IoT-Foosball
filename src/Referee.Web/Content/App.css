@@ -1,0 +1,181 @@
+﻿.startMenu {
+    display: flex;
+    flex-direction: column;
+}
+
+.startMenu a {
+    -moz-transition: .5s;
+    -ms-transition: .5s;
+    -o-transition: .5s;
+    -webkit-transition: .5s;
+    background-color: white;
+    border: 2px solid black;
+    color: black;
+    font-size: 20pt;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    padding: 10px;
+    text-align: center;
+    transition: .5s;
+    width: 100%;
+}
+
+.startMenu a:hover {
+    background-color: black;
+    color: white;
+}
+
+
+.foosBallTable {
+    height: 50px;
+    width: 50px;
+}
+
+.gamesList {
+    display: flex;
+    flex-direction: column;
+    max-height: 400px;
+    overflow-y: auto;
+    width: 100%;
+}
+
+.gameContainer {
+    border: 1px solid gray;
+    display: flex;
+    flex-direction: row;
+    height: 80px;
+}
+
+.tableInformation { width: 80%; }
+
+.tableName {
+    font-size: x-large;
+    font-weight: bold;
+    padding-left: 5px;
+}
+
+.tableLocation {
+    font-size: medium;
+    padding-left: 5px;
+}
+
+.tableStatus {
+    border-left: 1px solid gray;
+    text-align: center;
+    width: 20%;
+}
+
+.statusFree { font-size: large; }
+
+.score { font-size: x-large; }
+
+.top-three-container {
+    height: 300px;
+    margin: auto;
+    margin-bottom: 50px;
+    position: relative;
+    width: 50%;
+}
+
+.top-three {
+    border: 1px solid black;
+    font-size: x-large;
+    font-weight: bold;
+    position: absolute;
+    text-align: center;
+    width: 33.3%;
+}
+
+.first {
+    background-color: gold;
+    bottom: 0;
+    height: 250px;
+    left: 33.3%;
+}
+
+.second {
+    background-color: silver;
+    bottom: 0;
+    height: 180px;
+    left: 0;
+}
+
+.third {
+    background-color: #CD7F32;
+    bottom: 0;
+    height: 110px;
+    left: 66.6%;
+}
+
+table.match-details {
+    margin: auto;
+    margin-top: 30px;
+    width: 60%;
+}
+
+td.team, td.vs {
+    font-size: large;
+    font-weight: bold;
+    line-height: 6em;
+    vertical-align: bottom;
+    width: 35%;
+}
+
+td.left-team {
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+    text-align: right;
+}
+
+td.right-team {
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+    border-top: 1px solid black;
+    text-align: left;
+}
+
+td.left-score, td.right-score {
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+    font-size: 6em;
+    font-weight: bold;
+    text-align: center;
+    width: 10%;
+}
+
+td.vs {
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+    font-weight: normal;
+    text-align: center;
+    width: 10%;
+}
+
+td { text-align: center; }
+
+td.left-goal { text-align: right; }
+
+td.right-goal { text-align: left; }
+
+td.goal-time {
+    font-size: x-large;
+    font-weight: bold;
+}
+
+.live {
+    color: red;
+    font-size: 5em;
+    font-weight: bold;
+    left: 10%;
+    position: absolute;
+    top: 10%;
+}
+
+.invis { visibility: hidden; }
+
+span em {
+    font-size: x-large;
+    font-style: normal;
+    font-weight: bold;
+}
